@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Yazdani Hussain — GRID DAILY / Personal Archive</title>
+<meta name="description" content="Yazdani Hussain — personal archive of software, projects, learning, design, music and everyday interests.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--paper:#e9e5d9;--paper2:#f5f1e7;--ink:#2d3025;--muted:#6c6b5d;--olive:#555846;--cream:#e9e4d3;--blue:#879caf;--blue2:#6e8195;--tan:#a88967;--black:#242722;--green:#6b735e;--line:rgba(45,48,37,.34)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#d9d6ca;color:var(--ink);font-family:'IBM Plex Mono',monospace;overflow-x:hidden}button,a{font:inherit;color:inherit}button{cursor:pointer}.noise{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+.header{position:fixed;z-index:40;left:0;right:0;top:0;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(45,48,37,.25);background:rgba(239,236,226,.84);backdrop-filter:blur(8px);font-size:10px;text-transform:uppercase;letter-spacing:.08em}.header .left{display:flex;gap:12px;align-items:center}.mark{width:8px;height:8px;background:var(--olive);border-radius:50%;box-shadow:0 0 0 4px rgba(85,88,70,.1)}.header .right{display:flex;gap:18px;color:var(--muted)}
+.archive-page{min-height:100vh;padding:84px 28px 26px;background:radial-gradient(circle at 55% 8%,rgba(255,255,255,.7),transparent 28%),linear-gradient(115deg,#dfddd3,#cbc8bb 70%,#d7d4c9)}
+.archive-wrap{max-width:1500px;margin:auto;min-height:calc(100vh - 110px);display:grid;grid-template-columns:108px 1fr;box-shadow:0 28px 80px rgba(38,39,31,.18)}
+.archive-spine{background:#b7b3a7;border:1px solid rgba(45,48,37,.25);border-right:0;display:flex;align-items:center;justify-content:center;overflow:hidden}.archive-spine .word{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Space Grotesk';font-weight:700;font-size:clamp(35px,5.2vw,75px);letter-spacing:.02em;line-height:.8;color:#45483b}.archive-spine .num{position:absolute;bottom:35px;font-size:9px;letter-spacing:.15em;writing-mode:vertical-rl}
+.archive-body{position:relative;background:var(--paper);border:1px solid rgba(45,48,37,.25);padding:25px 30px 24px;overflow:hidden}.archive-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:9px;font-size:10px;text-transform:uppercase}.archive-top .right{color:#626358}.intro{display:grid;grid-template-columns:1fr 360px;gap:40px;padding:40px 0 27px;align-items:end}.intro h1{margin:0;font-family:'Space Grotesk';font-size:clamp(60px,8.2vw,128px);line-height:.78;letter-spacing:-.08em;color:#34372c}.intro p{margin:0 0 3px;font-size:10px;line-height:1.8;color:var(--muted)}
+.folder-field{position:relative;display:flex;align-items:stretch;height:min(68vh,680px);min-height:490px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0 24px;overflow:hidden}.folder{--w:18.7%;position:relative;flex:0 0 var(--w);height:100%;margin-right:-2.2%;border:1px solid rgba(45,48,37,.42);border-radius:0 0 4px 4px;box-shadow:7px 0 15px rgba(31,32,26,.13);transition:flex-basis .65s cubic-bezier(.2,.8,.2,1),transform .5s,filter .5s,z-index 0s;overflow:hidden;background:var(--cream);text-align:left;padding:0;isolation:isolate}.folder:nth-child(1){background:#e8e2d3;z-index:6}.folder:nth-child(2){background:#d8d4c7;z-index:5}.folder:nth-child(3){background:#aab7c2;z-index:4}.folder:nth-child(4){background:#b1926d;z-index:3}.folder:nth-child(5){background:#292c28;color:#ebe7da;z-index:2}.folder:nth-child(6){background:#737966;color:#f1eee2;z-index:1}.folder:hover,.folder:focus-visible{flex-basis:25%;transform:translateY(-8px);z-index:20;filter:brightness(1.03)}.folder:focus-visible{outline:2px solid #303328;outline-offset:3px}.folder-tab{position:absolute;top:0;left:10%;height:78px;width:58%;padding:12px 12px 8px;border-left:1px solid rgba(45,48,37,.32);border-right:1px solid rgba(45,48,37,.32);border-bottom:1px solid rgba(45,48,37,.32);border-radius:0 0 10px 10px;background:inherit;clip-path:polygon(0 0,100% 0,100% 72%,82% 72%,74% 100%,0 100%);font-size:9px;line-height:1.35;text-transform:uppercase}.folder-tab b{font-weight:600;display:block;margin-bottom:7px}.folder-inner{height:100%;padding:105px 18px 18px;display:flex;flex-direction:column;justify-content:space-between}.folder-code{font-size:9px;opacity:.72}.folder-title{font-family:'Space Grotesk';font-size:clamp(23px,2.5vw,43px);line-height:.86;letter-spacing:-.055em;text-transform:uppercase;max-width:95%;margin-top:10px}.folder-desc{font-size:8px;line-height:1.65;opacity:.8;max-width:230px}.folder-index{font-size:8px;opacity:.75;display:flex;justify-content:space-between;border-top:1px solid currentColor;padding-top:9px}.folder-symbol{font-size:30px;line-height:1;opacity:.5;margin-bottom:10px}.archive-bottom{display:flex;justify-content:space-between;padding-top:12px;font-size:8px;color:#6e6d62;text-transform:uppercase;letter-spacing:.04em}.archive-bottom strong{font-weight:500}
+.hint{position:fixed;z-index:45;left:50%;bottom:13px;transform:translateX(-50%);background:rgba(240,237,228,.93);border:1px solid rgba(45,48,37,.25);padding:8px 12px;font-size:9px;text-transform:uppercase;letter-spacing:.06em;transition:.3s}.hint.hide{opacity:0;transform:translate(-50%,10px)}
+.viewer{position:fixed;z-index:80;inset:0;background:rgba(37,39,34,.76);display:none;align-items:center;justify-content:center;padding:20px}.viewer.open{display:flex;animation:fade .3s}.shell{width:min(1320px,98vw);height:min(94vh,920px);background:#e9e6dc;border:1px solid rgba(255,255,255,.35);box-shadow:0 40px 120px rgba(0,0,0,.45);position:relative;overflow:hidden}.chrome{height:42px;background:#252823;color:#eeeadd;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:9px;text-transform:uppercase}.dotw{width:8px;height:8px;border-radius:50%;background:#bbb9ad}.chrome-title{margin-left:10px;opacity:.75}.x{margin-left:auto;background:none;border:0;color:#eeeadd;font-size:22px}.stage{height:calc(100% - 42px);position:relative;overflow:hidden;background:linear-gradient(#fbfaf5 0 47%,#f0ede3 78%,#dfe1d9);isolation:isolate}.stage:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(45,48,37,.035) 1px,transparent 1px),linear-gradient(rgba(45,48,37,.025) 1px,transparent 1px);background-size:40px 40px;opacity:.5}.machine-crop{position:absolute;z-index:5;left:50%;bottom:-2px;transform:translateX(-50%);width:min(930px,80vw);height:auto;pointer-events:none;user-select:none}.paper-real{position:absolute;z-index:4;left:50%;top:4%;transform:translate(-50%,0);width:min(570px,44vw);height:75%;background:linear-gradient(90deg,#e8e2d6,#f8f5ec 12%,#f6f2e9 87%,#e7e1d4);box-shadow:0 9px 26px rgba(45,48,37,.15);border-radius:34px 2px 0 0/38px 2px 0 0;padding:34px 45px 120px;overflow:auto;scrollbar-width:none;transition:transform .7s cubic-bezier(.25,.8,.25,1)}.paper-real::-webkit-scrollbar{display:none}.paper-real.feed{animation:paperFeed .7s ease both}.paper-head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(45,48,37,.55);padding-bottom:9px;font-size:9px}.typed{padding-top:24px;font-size:11px;line-height:1.8;white-space:pre-wrap}.typed h2{font-family:'Space Grotesk';font-size:36px;line-height:.9;letter-spacing:-.06em;margin:0 0 14px}.typed .meta{font-size:8px;letter-spacing:.09em;color:#6b6b60;text-transform:uppercase;margin-bottom:17px}.typed .line{min-height:1.8em}.typed .sep{height:1px;background:rgba(45,48,37,.25);margin:17px 0}.typed .label{font-weight:600}.typed .image{width:100%;margin:16px 0;border:1px solid rgba(45,48,37,.25);display:block;filter:sepia(.1) grayscale(.1)}.cursor{display:inline-block;width:7px;height:14px;background:#36382e;animation:blink .7s steps(1) infinite;vertical-align:-2px}.type-caption{position:absolute;left:16px;bottom:14px;z-index:9;background:rgba(240,238,229,.9);border:1px solid rgba(45,48,37,.25);padding:7px 9px;font-size:8px;text-transform:uppercase}.actions{position:absolute;right:16px;bottom:14px;z-index:9;display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.actions a{background:rgba(244,241,231,.94);border:1px solid rgba(45,48,37,.34);padding:8px 10px;font-size:8px;text-transform:uppercase;text-decoration:none}.actions a:hover{background:#fffdf5}.keys{position:absolute;z-index:8;left:50%;bottom:23px;transform:translateX(-50%);width:min(630px,64vw);display:grid;grid-template-columns:repeat(12,1fr);gap:4px;opacity:.8;pointer-events:none}.key{height:24px;background:linear-gradient(#d6e4eb,#9ab5c2);border:1px solid rgba(48,61,67,.25);border-radius:4px;box-shadow:0 3px 0 #718b96;display:grid;place-items:center;font-size:7px;color:#34434a;transition:.07s}.key.hit{transform:translateY(3px);box-shadow:0 0 0 #718b96;background:#eff6f8}.key.space{grid-column:span 5}.typing-status{position:absolute;top:13px;right:15px;z-index:9;font-size:8px;text-transform:uppercase;letter-spacing:.07em;color:#66675d}.typing-status span{display:inline-block;width:6px;height:6px;background:#6d755f;border-radius:50%;margin-right:5px;animation:pulse 1s infinite}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes blink{50%{opacity:0}}@keyframes pulse{50%{opacity:.25}}@keyframes paperFeed{0%{transform:translate(-50%,18px)}100%{transform:translate(-50%,0)}}
+@media(max-width:1000px){.archive-wrap{grid-template-columns:70px 1fr}.intro{grid-template-columns:1fr 280px}.folder-field{overflow-x:auto;scroll-snap-type:x mandatory;padding-right:30px}.folder{flex-basis:31%;min-width:31%;margin-right:-5%;scroll-snap-align:start}.folder:hover{flex-basis:31%}.paper-real{width:min(620px,62vw)}.machine-crop{width:min(900px,105vw)}.keys{width:72vw}}
+@media(max-width:650px){.header{height:48px;padding:0 13px;font-size:8px}.header .right span:nth-child(2){display:none}.archive-page{padding:66px 8px 15px}.archive-wrap{display:block;box-shadow:none}.archive-spine{height:55px;border-right:1px solid rgba(45,48,37,.25);justify-content:flex-start;padding-left:12px}.archive-spine .word{writing-mode:horizontal-tb;transform:none;font-size:27px}.archive-spine .num{right:20px;bottom:auto;top:84px}.archive-body{padding:18px 12px}.archive-top{font-size:8px}.archive-top .right{display:none}.intro{display:block;padding:30px 0 20px}.intro h1{font-size:58px}.intro p{margin-top:18px;font-size:8px;max-width:95%}.folder-field{height:68vh;min-height:520px;gap:0;padding:12px 0 20px}.folder{min-width:72%;flex-basis:72%;margin-right:-42%;scroll-snap-align:start}.folder:hover,.folder:focus-visible{flex-basis:72%}.folder-inner{padding:102px 16px 16px}.folder-title{font-size:42px}.folder-desc{font-size:8px}.archive-bottom{font-size:7px}.viewer{padding:0}.shell{width:100vw;height:100vh;border:0}.chrome{height:38px}.stage{height:calc(100% - 38px)}.paper-real{width:78vw;height:69%;top:3%;padding:27px 24px 90px}.typed{font-size:9px}.typed h2{font-size:28px}.machine-crop{width:132vw;max-width:none;bottom:-1px}.keys{width:72vw;bottom:15px;gap:3px}.key{height:18px;font-size:5px}.actions{right:9px;bottom:9px}.actions a{font-size:7px;padding:7px 8px}.type-caption{left:9px;bottom:9px;font-size:7px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<header class="header"><div class="left"><span class="mark"></span><span>YAZDANI HUSSAIN / PERSONAL ARCHIVE</span></div><div class="right"><span>ANANTAPUR / INDIA</span><span>BUILD / LEARN / SHIP</span><span>2026—27</span></div></header>
+<main class="archive-page">
+<section class="archive-wrap">
+  <aside class="archive-spine"><div class="word">GRID DAILY — 01—06</div><div class="num">ARCHIVE / 2026</div></aside>
+  <div class="archive-body">
+    <div class="archive-top"><span>yazdani_hussain.archive</span><span class="right">visual studies / code / motion / life</span></div>
+    <div class="intro"><h1>MY<br>ARCHIVE.</h1><p>Not a résumé. A collection of the things I build, learn, obsess over, redesign, listen to and keep moving. Open a file. Let the typewriter write it.</p></div>
+    <div class="folder-field" aria-label="Archive files">
+      <button class="folder" data-file="about">
+        <div class="folder-tab"><b>CODE_001 //</b>IDENTITY</div><div class="folder-inner"><div><div class="folder-code">FILE_01 // ABOUT</div><div class="folder-symbol">◐</div><div class="folder-title">ABOUT<br>ME</div><p class="folder-desc">The person behind the code — student, builder, curious mind, everyday systems.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>01</span></div></div>
+      </button>
+      <button class="folder" data-file="projects">
+        <div class="folder-tab"><b>CODE_002 //</b>PROJECT LOG</div><div class="folder-inner"><div><div class="folder-code">FILE_02 // BUILDS</div><div class="folder-symbol">⌁</div><div class="folder-title">PROJECT<br>LOG</div><p class="folder-desc">StudyMind, NEXA, Smart Eggy Timer and the experiments that became real software.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>02</span></div></div>
+      </button>
+      <button class="folder" data-file="stack">
+        <div class="folder-tab"><b>CODE_003 //</b>STACK</div><div class="folder-inner"><div><div class="folder-code">FILE_03 // TOOLS</div><div class="folder-symbol">⌘</div><div class="folder-title">TECH<br>STACK</div><p class="folder-desc">Languages, frameworks, databases, APIs, AI and the tools used to turn ideas into working systems.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>03</span></div></div>
+      </button>
+      <button class="folder" data-file="journey">
+        <div class="folder-tab"><b>CODE_004 //</b>JOURNEY</div><div class="folder-inner"><div><div class="folder-code">FILE_04 // PROCESS</div><div class="folder-symbol">↗</div><div class="folder-title">BUILD<br>JOURNEY</div><p class="folder-desc">College labs → algorithms → web development → deployment → AI experiments → hackathons.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>04</span></div></div>
+      </button>
+      <button class="folder" data-file="life">
+        <div class="folder-tab"><b>CODE_005 //</b>OFF-CODE</div><div class="folder-inner"><div><div class="folder-code">FILE_05 // LIFE</div><div class="folder-symbol">♫</div><div class="folder-title">OFF<br>CODE</div><p class="folder-desc">Music, aesthetics, journaling, routines, movement, ideas and the things that make the builder a person.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>05</span></div></div>
+      </button>
+      <button class="folder" data-file="signal">
+        <div class="folder-tab"><b>CODE_006 //</b>SIGNAL</div><div class="folder-inner"><div><div class="folder-code">FILE_06 // LINKS</div><div class="folder-symbol">⌁</div><div class="folder-title">SIGNAL<br>/ LINKS</div><p class="folder-desc">GitHub, portfolio, project routes and the places where the archive continues.</p></div><div class="folder-index"><span>OPEN FILE →</span><span>06</span></div></div>
+      </button>
+    </div>
+    <div class="archive-bottom"><span>VISUAL STUDIES: <strong>TYPE / IMAGE / MOTION / CODE</strong></span><span>CLICK / TAP A FOLDER</span></div>
+  </div>
+</section>
+</main>
+<div class="hint" id="hint">CLICK / TAP A FILE — THE ARCHIVE IS INTERACTIVE</div>
+<div class="viewer" id="viewer" aria-hidden="true">
+  <div class="shell">
+    <div class="chrome"><span class="dotw"></span><span class="dotw"></span><span class="dotw"></span><span class="chrome-title" id="chromeTitle">CODE_001 // IDENTITY</span><button class="x" id="close">×</button></div>
+    <div class="stage">
+      <div class="typing-status"><span></span><b id="typingStatus">TYPEWRITER READY</b></div>
+      <div class="paper-real" id="paper"><div class="paper-head"><span>yazdani.hussain</span><span id="paperCode">FILE_01</span></div><div class="typed" id="typed"></div></div>
+      <img class="machine-crop" src="assets/typewriter-machine-crop.jpg" alt="Blue typewriter reference">
+      <div class="keys" id="keys"></div>
+      <div class="type-caption">LIVE TYPE / KEY ACTION / PAPER FEED</div>
+      <div class="actions" id="actions"></div>
+    </div>
+  </div>
+</div>
+<script>
+const PROJECTS={
+ study:{label:'OPEN STUDYMIND',url:'https://smart-study-assistant-0n49.onrender.com/pages/index.html'},
+ nexa:{label:'OPEN NEXA — GITHUB',url:'https://github.com/YazdaniHussain/NEXA'},
+ eggy:{label:'OPEN EGGY — GITHUB',url:'https://github.com/YazdaniHussain/eggy-timer'},
+ github:{label:'OPEN GITHUB',url:'https://github.com/YazdaniHussain'},
+ portfolio:{label:'OPEN PORTFOLIO',url:'https://yazdanihussain.github.io'}
+};
+const files={
+ about:{code:'CODE_001 // IDENTITY',no:'FILE_01',title:'YAZDANI HUSSAIN',meta:'CSE / BUILDER / STUDENT / ANANTAPUR, INDIA',lines:[
+ 'I like making ideas tangible. A page, a tool, a system, a tiny interaction — if it can be built, I want to understand how it works.',
+ '',
+ 'Computer Science & Engineering student at JNTUA College of Engineering, Anantapur.',
+ '',
+ 'I move between code and design: full-stack development, AI experiments, productivity systems, interfaces and the small details that make software feel alive.',
+ '',
+ 'I am especially drawn to projects where technology becomes useful in ordinary life — studying, planning, focusing, creating and staying consistent.',
+ '',
+ 'CURRENT MODE: BUILD / LEARN / SHIP'
+ ],links:[]},
+ projects:{code:'CODE_002 // PROJECT LOG',no:'FILE_02',title:'PROJECT ARCHIVE',meta:'REAL BUILDS / DEPLOYED + EXPERIMENTAL',lines:[
+ '01 / STUDYMIND — AI-BASED SMART STUDY ASSISTANT',
+ 'A full-stack study platform with authentication, dashboard, Pomodoro focus timer, to-do lists, calendar, goals, analytics, smart notes, AI summaries, keywords, flashcards, quizzes, voice control, emotion detection, notifications and PWA support.',
+ '',
+ '02 / NEXA — PERSONAL GROWTH & CONSISTENCY',
+ 'A mobile-first productivity system built around habits, mood, journaling, progress, daily planning and focused Pomodoro workflows.',
+ '',
+ '03 / SMART EGGY TIMER',
+ 'A small retro timer project built in Java — simple interaction, playful identity and a focused purpose.',
+ '',
+ 'PROJECTS ARE NOT JUST PAGES. THEY ARE SYSTEMS I KEEP REBUILDING.'
+ ],links:['study','nexa','eggy']},
+ stack:{code:'CODE_003 // STACK',no:'FILE_03',title:'TOOLS / TECHNOLOGY',meta:'WHAT I HAVE WORKED WITH',lines:[
+ 'LANGUAGES — Python / C / Java / JavaScript',
+ '',
+ 'FRONTEND — HTML / CSS / JavaScript / React.js',
+ '',
+ 'BACKEND — Node.js / Express.js / REST APIs',
+ '',
+ 'DATABASES — MySQL / MongoDB / phpMyAdmin / Aiven Cloud MySQL',
+ '',
+ 'AI + COMPUTER VISION — OpenCV / emotion detection / AI summaries / keywords / flashcards',
+ '',
+ 'TOOLS — Git / GitHub / VS Code / Ubuntu / Apache / Eclipse / XAMPP / Render',
+ '',
+ 'CURRENT DIRECTION: FULL-STACK DEVELOPMENT + AI/ML'
+ ],links:[]},
+ journey:{code:'CODE_004 // JOURNEY',no:'FILE_04',title:'BUILD JOURNEY',meta:'COLLEGE → CODE → LIVE SYSTEMS',lines:[
+ 'I started with fundamentals: C, Python, Java, data structures, algorithms and databases.',
+ '',
+ 'Then came the web — HTML, CSS and JavaScript — followed by React, Node.js, Express and REST APIs.',
+ '',
+ 'College labs turned theory into repetition: linked lists, stacks, queues, sorting, searching, trees, graphs, DBMS, PL/SQL and software engineering.',
+ '',
+ 'Then I started shipping: GitHub repositories, cloud databases, Render deployment, HTTPS, APIs and installable PWAs.',
+ '',
+ 'Now the loop is simple: learn something → build it → break it → redesign it → ship it → learn again.',
+ '',
+ 'NEXT: MORE SYSTEMS / BETTER ENGINEERING / STRONGER IDEAS'
+ ],links:[]},
+ life:{code:'CODE_005 // OFF-CODE',no:'FILE_05',title:'OFF-CODE',meta:'THE PERSON BETWEEN THE PROJECTS',lines:[
+ 'A portfolio should not make a person look like a list of technologies.',
+ '',
+ 'I care about aesthetics — especially clean, modern, futuristic interfaces and the feeling of a well-designed digital space.',
+ '',
+ 'Music is part of the everyday atmosphere: Taylor Swift, The 1975, Shawn Mendes, Justin Bieber, The Weeknd, Olivia Rodrigo, Ariana Grande and Kanye West are among the artists I return to.',
+ '',
+ 'I like building personal systems too: journaling, planning days, tracking habits, focused study sessions, morning movement and turning routines into something I can actually enjoy.',
+ '',
+ 'NEXA came from that side of me — the idea that software can help a person build a life, not just complete a task.',
+ '',
+ 'OFF-CODE STATUS: CURIOUS / CREATIVE / ALWAYS REWORKING THE SYSTEM'
+ ],links:[]},
+ signal:{code:'CODE_006 // SIGNAL',no:'FILE_06',title:'FIND THE BUILDER',meta:'LINKS / CODE / PROJECTS',lines:[
+ 'GITHUB — github.com/YazdaniHussain',
+ '',
+ 'PORTFOLIO — yazdanihussain.github.io',
+ '',
+ 'STUDYMIND — live deployment',
+ '',
+ 'NEXA — GitHub project',
+ '',
+ 'SMART EGGY TIMER — GitHub project',
+ '',
+ 'THE ARCHIVE ENDS HERE.',
+ 'THE BUILD DOESN’T.'
+ ],links:['github','portfolio','study','nexa','eggy']}
+};
+const viewer=document.getElementById('viewer'),typed=document.getElementById('typed'),paper=document.getElementById('paper'),keys=document.getElementById('keys'),actions=document.getElementById('actions'),status=document.getElementById('typingStatus'),chromeTitle=document.getElementById('chromeTitle'),paperCode=document.getElementById('paperCode'),hint=document.getElementById('hint');let interval=null;
+function buildKeys(){keys.innerHTML='';const chars='1234567890QWERTYUIOPASDFGHJKLZXCVBNM,.!?';for(const c of chars){const k=document.createElement('div');k.className='key';k.dataset.key=c;k.textContent=c;keys.appendChild(k)}const s=document.createElement('div');s.className='key space';s.dataset.key=' ';s.textContent='SPACE';keys.appendChild(s)}buildKeys();
+function press(ch){let k=[...keys.children].find(x=>x.dataset.key===String(ch).toUpperCase());if(!k)k=[...keys.children][Math.floor(Math.random()*keys.children.length)];k.classList.add('hit');setTimeout(()=>k.classList.remove('hit'),85)}
+function addActions(list){actions.innerHTML='';list.forEach(id=>{const a=document.createElement('a');a.href=PROJECTS[id].url;a.target='_blank';a.rel='noopener';a.textContent=PROJECTS[id].label;actions.appendChild(a)})}
+function renderShell(data){chromeTitle.textContent=data.code;paperCode.textContent=data.no;typed.innerHTML='';const h=document.createElement('h2');h.textContent=data.title;typed.appendChild(h);const m=document.createElement('div');m.className='meta';m.textContent=data.meta;typed.appendChild(m);data.lines.forEach((line,i)=>{if(line===''){const sep=document.createElement('div');sep.className='sep';typed.appendChild(sep);return}const p=document.createElement('div');p.className='line';typed.appendChild(p)});const c=document.createElement('span');c.className='cursor';typed.appendChild(c);addActions(data.links)}
+async function typeFile(id){const data=files[id];renderShell(data);status.textContent='TYPEWRITER WORKING';paper.classList.remove('feed');void paper.offsetWidth;paper.classList.add('feed');if(interval)clearInterval(interval);const lines=[...typed.querySelectorAll('.line')];let li=0,ci=0,global=0;const full=data.lines.filter(x=>x!=='').join('');interval=setInterval(()=>{if(li>=lines.length){clearInterval(interval);status.textContent='PAPER COMPLETE';return}const target=data.lines.filter(x=>x!=='')[li];if(ci<target.length){lines[li].textContent+=target[ci];press(target[ci]);ci++;global++;if(global%42===0){paper.scrollTo({top:paper.scrollHeight,behavior:'smooth'});paper.style.transform=`translate(-50%,-${Math.min(22,global/18)}px)`;setTimeout(()=>paper.style.transform='translate(-50%,0)',320)}}else{li++;ci=0}},18)}
+document.querySelectorAll('.folder').forEach(f=>f.addEventListener('click',()=>{hint.classList.add('hide');viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';typeFile(f.dataset.file)}));
+function close(){if(interval)clearInterval(interval);viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');document.body.style.overflow='';status.textContent='TYPEWRITER READY'}document.getElementById('close').addEventListener('click',close);viewer.addEventListener('click',e=>{if(e.target===viewer)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))close()});
+</script>
+</body></html>
